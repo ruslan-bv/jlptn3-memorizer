@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import jlptN3list from '../data/jlptN3list.json';
 const title = "JLPT N3 Memorizer!"
+
+console.log(jlptN3list)
 </script>
 
 <template>

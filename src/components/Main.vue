@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import Grid from './Grid.vue';
 import jlptN3list from '../data/jlptN3list.json';
 const title = "JLPT N3 Memorizer!"
 
-console.log(jlptN3list)
 </script>
 
 <template>
-    <div class="dashboard">
-        <h2>{{ title }}</h2>
+    <div>
+        <header class="dashboard">
+            <h2>{{ title }}</h2>
+        </header>
+        <Grid :kanjiList="jlptN3list" />
     </div>
 </template>
 
@@ -18,10 +21,10 @@ h2 {
     font-size: 2em;
 }
 .dashboard {
-    position: absolute;
-    top: 50%;
+    /* top: 10%; */
     left: 50%;
     transform: translate(-50%, -50%);
     /* margin: 0 auto; */
+    border-bottom: 1px solid black;
 }
 </style>

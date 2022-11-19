@@ -3,18 +3,18 @@ const title = "About"
 </script>
 
 <template>
-    <div class="dashboard">
+    <div class="about">
         <h2>{{ title }}</h2>
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 h2 {
     /* margin: 0 auto; */
     text-align: center;
     font-size: 2em;
 }
-.dashboard {
+.about {
     position: absolute;
     top: 50%;
     left: 50%;

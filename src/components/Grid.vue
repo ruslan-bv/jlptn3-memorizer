@@ -1,23 +1,34 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import BackSide from './BackSide.vue';
 const props = defineProps<{
     kanjiList: any
 }>()
 
-console.log(props.kanjiList)
+const kanjiList = ref(props.kanjiList);
 const cardCovers = props.kanjiList.map((kanji: any) => Object.keys(kanji)[0]);
-console.log(cardCovers)
-const cards = ref(cardCovers)
+// const cards = ref(cardCovers)
 
-console.log(cards.value)
-console.log(typeof cards.value)
+const selectedCard = ref(null);
+const selectedLetter = ref('');
+const showDescription = (e: Event) => {
+    const element = e.target as HTMLInputElement;
+    const text = element.textContent || '';
+    const selectedKanji = kanjiList.value.find((kanji: any) => Object.keys(kanji)[0] === text);
+    selectedLetter.value = text;
+    selectedCard.value = selectedKanji;
+}
+
 </script>
 
 <template>
     <div class="grid">
-        <template v-for="card in cards">
-            <div class="grid-element">
-                <span class="letter">{{ card }}</span>
+        <template v-for="card in kanjiList">
+            <div id="card" class="grid-element" @click="showDescription">
+                <div v-if="selectedCard && selectedLetter === Object.keys(card)[0]">
+                    <BackSide :letter="selectedLetter" :selectedCard="selectedCard" />
+                </div>
+                <span v-else class="front-side">{{ Object.keys(card)[0] }}</span>
             </div>
         </template>
     </div>
@@ -26,21 +37,21 @@ console.log(typeof cards.value)
 <style scoped lang="scss">
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 20px 50px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px 30px;
 }
 
 .grid-element {
     display: grid;
     padding: 10px;
-    border: 1px solid black;
-    width: 100px;
-    height: 100px;
+    border: 1px solid #00A746;
+    width: 220px;
+    height: 250px;
 }
 
-.letter {
+.front-side {
     display: block;
     margin: auto;
-    font-size: 3em;
+    font-size: 7em;
 }
 </style>

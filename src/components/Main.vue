@@ -25,6 +25,6 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     /* margin: 0 auto; */
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #00A746;
 }
 </style>

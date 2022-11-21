@@ -12,6 +12,7 @@ const cardCovers = props.kanjiList.map((kanji: any) => Object.keys(kanji)[0]);
 const selectedCard = ref(null);
 const selectedLetter = ref('');
 const showDescription = (e: Event) => {
+    e.stopPropagation();
     const element = e.target as HTMLInputElement;
     const text = element.textContent || '';
     const selectedKanji = kanjiList.value.find((kanji: any) => Object.keys(kanji)[0] === text);
@@ -19,10 +20,12 @@ const showDescription = (e: Event) => {
     selectedCard.value = selectedKanji;
 }
 
+const hideDescription = () => selectedCard.value = null;
+
 </script>
 
 <template>
-    <div class="grid">
+    <div class="grid" @click="hideDescription">
         <template v-for="card in kanjiList">
             <div id="card" class="grid-element" @click="showDescription">
                 <div v-if="selectedCard && selectedLetter === Object.keys(card)[0]">
@@ -51,7 +54,7 @@ const showDescription = (e: Event) => {
 }
 
 .grid-element:active {
-    background-color: black;
+    background-color: #68EDCB;
 }
 
 .front-side {

@@ -1,10 +1,16 @@
-const selectRandomKanjiCards = (kanjiList: any, numberChecked: number) => {
+export const selectRandomKanjiCards = (kanjiList: any, numberChecked: number) => {
     const cardsToTake = numberChecked * 4;
-    let resultList = [];
+    let cardsArray = [];
 
     for (let i = 0; i < cardsToTake; i++) {
-        resultList.push(kanjiList[Math.floor(Math.random() * kanjiList.length)]);
+        cardsArray.push(kanjiList[Math.floor(Math.random() * kanjiList.length)]);
     }
 
-    return resultList;
+    let slicedCardsArray = [];
+
+    for (let i = 0; i < cardsArray.length; i += 4) {
+        slicedCardsArray.push(cardsArray.slice(i, i+4));
+    }
+
+    return slicedCardsArray;
 }

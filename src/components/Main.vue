@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import Grid from './Grid.vue';
+import { selectRandomKanjiCards } from '../helpers/helpers';
 import jlptN3list from '../data/jlptN3list.json';
+
 const title = "JLPT N3 Memorizer: Learn and Master Kanji!"
+
+const challengeDifficulty = 10;
+const randomCardList = ref();
+
+const buildRandomCardList = () => {
+    const cardArray = selectRandomKanjiCards(jlptN3list, challengeDifficulty);
+    randomCardList.value = cardArray;
+}
 
 </script>
 
@@ -15,7 +26,9 @@ const title = "JLPT N3 Memorizer: Learn and Master Kanji!"
                 </div>
             </div> -->
             <div>
-                <button>Challenge!</button>
+                <router-link to="/drill" v-slot="{ navigate }">
+                <button @click="[buildRandomCardList, navigate]">Drill Challenge!</button>
+                </router-link>
             </div>
         </header>
         <Grid :kanjiList="jlptN3list" />

@@ -47,6 +47,11 @@ const showDescription = (e: Event) => {
     border: 1px solid #00A746;
     width: 220px;
     height: 250px;
+    transition: all 1s ease-out;
+}
+
+.grid-element:active {
+    background-color: black;
 }
 
 .front-side {

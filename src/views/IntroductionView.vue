@@ -31,10 +31,14 @@ button {
     width: 230px;
     height: 80px;
     border: 2px solid #00A746;
-    border-radius: 20%;
+    border-radius: 10%;
     font-size: 2em;
     background-color:#00A746;
     color: white;
+}
+
+button:hover {
+    color: black;
 }
 
 .buttons {

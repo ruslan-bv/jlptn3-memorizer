@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue';
+import IntroductionView from '../views/IntroductionView.vue';
+import KanjiView from '../views/KanjiView.vue';
 // import About from '../components/About.vue';
 
 const router = createRouter({
@@ -7,8 +8,13 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name:'introduction',
+      component: IntroductionView
+    },
+    {
+      path: '/kanji',
+      name: 'kanji',
+      component: KanjiView
     },
     {
       path: '/about',

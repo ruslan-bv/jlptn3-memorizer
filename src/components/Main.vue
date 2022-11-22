@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Grid from './Grid.vue';
+import Drill from './Drill.vue';
 import { selectRandomKanjiCards } from '../helpers/helpers';
 import jlptN3list from '../data/jlptN3list.json';
 
@@ -14,6 +15,8 @@ const buildRandomCardList = () => {
     randomCardList.value = cardArray;
 }
 
+buildRandomCardList();
+
 </script>
 
 <template>
@@ -26,8 +29,8 @@ const buildRandomCardList = () => {
                 </div>
             </div> -->
             <div>
-                <router-link to="/drill" v-slot="{ navigate }">
-                <button @click="[buildRandomCardList, navigate]">Drill Challenge!</button>
+                <router-link :to="{ name: 'drill' }" v-slot="{ navigate }">
+                <button @click="navigate">Drill Challenge!</button>
                 </router-link>
             </div>
         </header>

@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 const props = defineProps<{
     deck: any
 }>()
-
+console.log(props)
+const currentCardSet = ref(props.deck);
+console.log(currentCardSet)
 </script>
 
 <template>

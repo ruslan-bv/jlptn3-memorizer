@@ -20,7 +20,8 @@ const router = createRouter({
     {
       path: '/drill',
       name: 'drill',
-      component: Drill
+      component: Drill,
+      props: true
     },
     {
       path: '/about',

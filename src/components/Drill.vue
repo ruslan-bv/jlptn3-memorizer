@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { kanjiStore } from '../store/kanjiStore';
-// const props = defineProps<{
-//     deck: any
-// }>()
-console.log(kanjiStore)
 const currentCardSet = reactive(kanjiStore.currentKanjiDeck);
 console.log(currentCardSet)
 </script>

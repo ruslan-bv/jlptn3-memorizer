@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Grid from './Grid.vue';
-import Drill from './Drill.vue';
 import { selectRandomKanjiCards } from '../helpers/helpers';
 import jlptN3list from '../data/jlptN3list.json';
+import { kanjiStore } from '../store/kanjiStore';
 
 const title = "JLPT N3 Memorizer: Learn and Master Kanji!"
 
@@ -13,6 +13,7 @@ const randomCardList = ref();
 const buildRandomCardList = () => {
     const cardArray = selectRandomKanjiCards(jlptN3list, challengeDifficulty);
     randomCardList.value = cardArray;
+    kanjiStore.currentKanjiDeck = randomCardList.value;
 }
 
 buildRandomCardList();

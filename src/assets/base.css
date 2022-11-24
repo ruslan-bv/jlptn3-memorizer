@@ -55,8 +55,25 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
-  position: relative;
+  /* position: relative; */
   font-weight: normal;
+}
+
+body:before, body:after {
+  content: "";
+  position: fixed;
+  background: #9AD5A1;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+body:before {
+  top: 0;
+}
+
+body:after {
+  bottom: 0;
 }
 
 body {
@@ -65,11 +82,13 @@ body {
   background: #F8FFF8;
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: monospace, monospace;
+  font-family: sans-serif;
   /* font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
     Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  border-left: 3px solid #9AD5A1;
+  border-right: 3px solid #9AD5A1;
 }

@@ -5,10 +5,7 @@ import { ref } from 'vue';
         selectedCard: any;
     }>()
 
-    console.log(props.letter)
-    console.log(props.selectedCard)
     const cardProps: any = ref(Object.values(props.selectedCard)[0]);
-    console.log(cardProps)
 </script>
 
 <template>

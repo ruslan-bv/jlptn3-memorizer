@@ -6,17 +6,23 @@ const selectionToShow = Object.values(currentCardSet)[0];
 
 const selectCard = (e: Event) => {
     e.stopPropagation();
-    const element = e.target as HTMLInputElement;
-    const text = element.textContent || '';
+    
+    const selectedCards = document.querySelectorAll('.card');
+    selectedCards.forEach((card) => card.classList.remove('card-selected'));
+
+    const target = e.target as Element;
+    const parentDiv = target.closest('div');
+    parentDiv?.classList?.add('card-selected');
 }
+
 </script>
 
 <template>
 <div class="drill">
     <div class="container">
         <div class="cards">
-            <template v-for="card in selectionToShow" @click="selectCard">
-                <div class="card">
+            <template v-for="card in selectionToShow">
+                <div class="card" @click="selectCard">
                     <span class="front-side">{{ Object.keys(card)[0] }}</span>
                 </div>
             </template>
@@ -35,12 +41,16 @@ const selectCard = (e: Event) => {
     border: 1px solid #00A746;
     width: 200px;
     height: 250px;
+}
 
-    .front-side {
-        display: block;
-        margin: auto;
-        font-size: 8em;
-    }
+.front-side {
+    display: block;
+    margin: auto;
+    font-size: 8em;
+}
+
+.card-selected {
+    border: 2px solid blue;
 }
 
 .cards {

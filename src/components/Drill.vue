@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { kanjiStore } from '../store/kanjiStore';
+
+const isCardSelected = ref(false);
+
 const currentCardSet = reactive(kanjiStore.currentKanjiDeck);
 const selectionToShow = Object.values(currentCardSet)[0];
 
@@ -13,6 +16,7 @@ const selectCard = (e: Event) => {
     const target = e.target as Element;
     const parentDiv = target.closest('div');
     parentDiv?.classList?.add('card-selected');
+    isCardSelected.value = true;
 }
 
 </script>
@@ -28,7 +32,7 @@ const selectCard = (e: Event) => {
             </template>
         </div>
         <div class="navigation">
-            test
+            <button class="select">SELECT</button>
         </div>
     </div>
 </div>
@@ -41,12 +45,6 @@ const selectCard = (e: Event) => {
     border: 1px solid #00A746;
     width: 200px;
     height: 250px;
-}
-
-.front-side {
-    display: block;
-    margin: auto;
-    font-size: 8em;
 }
 
 .card-selected {
@@ -72,5 +70,25 @@ const selectCard = (e: Event) => {
     left: 50%;
     margin: -200px 0 0 -400px;
     border: 2px solid #05652d;
+}
+
+.front-side {
+    display: block;
+    margin: auto;
+    font-size: 8em;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select {
+    width: 100px;
+    height: 50px;
+    background-color: #9AD5A1;
+    font-weight: 600;
+    border-radius: 3px;
 }
 </style>

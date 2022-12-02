@@ -39,12 +39,28 @@ buildRandomCardList();
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 button {
     height: 50px;
-    background-color: #9AD5A1;
-    border: none;
-    /* color: */
+    width: 200px;
+    font-size: 1.5em;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 0 9px #9AD5A1;
+    border-radius: 10px;
+    border: 1px solid #666;
+    outline: none;
+
+    &:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+
+    &:hover {
+        color: white;
+        background-color: #00A746;
+    }
 }
 
 header {

@@ -19,11 +19,20 @@ const selectCard = (e: Event) => {
     isCardSelected.value = true;
 }
 
+const deselectCard = (e: Event) => {
+    e.stopPropagation();
+
+    const selectedCards = document.querySelectorAll('.card');
+    selectedCards.forEach((card) => card.classList.remove('card-selected'));
+
+    isCardSelected.value = false;
+}
+
 </script>
 
 <template>
 <div class="drill">
-    <div class="container">
+    <div class="container" @click="deselectCard">
         <div class="cards">
             <template v-for="card in selectionToShow">
                 <div class="card" @click="selectCard">
@@ -32,7 +41,7 @@ const selectCard = (e: Event) => {
             </template>
         </div>
         <div class="navigation">
-            <button class="select">SELECT</button>
+            <button v-if="isCardSelected" class="select">SELECT</button>
         </div>
     </div>
 </div>
@@ -42,13 +51,14 @@ const selectCard = (e: Event) => {
 .card {
     display: grid;
     padding: 10px;
-    border: 1px solid #00A746;
+    border-bottom: 1px solid black;
     width: 200px;
     height: 250px;
 }
 
 .card-selected {
-    border: 2px solid blue;
+    border: 10px solid #9AD5A1;
+    border-radius: 5px;
 }
 
 .cards {
@@ -58,6 +68,8 @@ const selectCard = (e: Event) => {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
 }
@@ -76,12 +88,18 @@ const selectCard = (e: Event) => {
     display: block;
     margin: auto;
     font-size: 8em;
+    font-weight: 400;
+
+    &:hover {
+        font-weight: 600;
+    }
 }
 
 .navigation {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: inherit;
 }
 
 .select {
